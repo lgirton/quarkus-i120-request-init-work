@@ -2,7 +2,7 @@ package com.sdgesi;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.RedeliveryPolicy;
-import org.apache.activemq.jms.pool.PooledConnectionFactory;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.activemq.ActiveMQComponent;
 import org.apache.camel.component.jms.JmsQueueEndpoint;
