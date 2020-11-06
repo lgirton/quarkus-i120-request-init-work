@@ -47,6 +47,7 @@ public class Configuration {
         return component;
     }
 
+
     private void configureRedeliveryPolicy(ActiveMQComponent component) {
         PooledConnectionFactory connectionFactory = (PooledConnectionFactory) component.getOrCreateConnectionFactory();
 
