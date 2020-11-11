@@ -32,7 +32,7 @@ public class Configuration {
     CamelContext context;
 
     @Named
-    ActiveMQComponent activemq() {
+    public ActiveMQComponent activemq() {
         ActiveMQComponent component =
                 ComponentsBuilderFactory
                         .activemq()
