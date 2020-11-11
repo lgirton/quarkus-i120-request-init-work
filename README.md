@@ -46,3 +46,6 @@ If you want to learn more about building native executables, please consult http
 # Command Mode
 
 Guide: https://quarkus.io/guides/command-mode-reference
+
+registry.redhat.io/openshift3/jenkins-agent-maven-35-rhel7
+

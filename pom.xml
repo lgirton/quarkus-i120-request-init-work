@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sdgesi</groupId>
     <artifactId>quarkus-i120-request-init-work</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <properties>
-        <surefire-plugin.version>2.22.1</surefire-plugin.version>
-        <maven.compiler.target>11</maven.compiler.target>
-        <quarkus.platform.version>1.9.1.Final</quarkus.platform.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.parameters>true</maven.compiler.parameters>
-        <quarkus-plugin.version>1.9.1.Final</quarkus-plugin.version>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <quarkus-plugin.version>1.9.2.Final</quarkus-plugin.version>
+        <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+        <quarkus.platform.version>1.9.2.Final</quarkus.platform.version>
+        <surefire-plugin.version>2.22.1</surefire-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -44,8 +44,8 @@
             <artifactId>camel-quarkus-activemq</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -119,6 +119,28 @@
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                    </generateGitPropertiesFilename>
+                    <commitIdGenerationMode>full</commitIdGenerationMode>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                    <useNativeGit>true</useNativeGit>
                 </configuration>
             </plugin>
         </plugins>

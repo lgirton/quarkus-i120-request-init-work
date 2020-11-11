@@ -41,6 +41,7 @@ public class Configuration {
                         .build();
 
         component.setCamelContext(context);
+        component.setMaxConcurrentConsumers(5);
 
         configureRedeliveryPolicy(component);
 
